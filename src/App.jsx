@@ -1,6 +1,6 @@
 import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import Theme from "./material-ui-theme/theme";
+import Theme from "./material-ui-theme/Theme";
 import Navigation from "./components/Navigation/Navigation";
 import { Suspense, lazy } from "react";
 import { MainContent } from "./styles/App.styles";

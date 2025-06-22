@@ -1,0 +1,18 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.main-content {
+  margin-top: 64px; /* push below app bar */
+  padding: 16px; /* optional, for breathing space */
+}
+
+/* For desktop screens only: add margin-left */
+@media (min-width: 960px) {
+  .main-content {
+    margin-left: 240px; /* width of drawer */
+  }
+}

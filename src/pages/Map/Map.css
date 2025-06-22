@@ -1,0 +1,19 @@
+.kilometers-away {
+  color: #666;
+}
+
+.form-style {
+  padding: 10px;
+  background: #fff;
+  z-index: 2;
+  position: relative;
+}
+
+.main-div {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+

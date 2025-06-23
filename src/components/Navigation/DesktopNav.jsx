@@ -16,14 +16,14 @@ const drawerWidth = 240;
 const DesktopNav = ({ menu, currentIndex, handleNavigate, pathname }) => {
   return (
     <>
-   <AppBar position="fixed" sx={{ zIndex: 1300 }}>
+   {/* <AppBar position="fixed" sx={{ zIndex: 1300 }}>
   <Toolbar sx={{ position: "relative", justifyContent: "flex-start" }}>
 
     <Typography variant="h6" noWrap>
       Your App Name
     </Typography>
   </Toolbar>
-</AppBar>
+</AppBar> */}
 
 
       <Drawer
@@ -35,7 +35,7 @@ const DesktopNav = ({ menu, currentIndex, handleNavigate, pathname }) => {
             width: drawerWidth,
             boxSizing: "border-box",
             top: 0,
-            height: "100vh", // ensures full-height drawer
+            height: "100vh", 
           },
         }}
       >

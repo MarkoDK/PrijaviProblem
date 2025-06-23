@@ -27,12 +27,10 @@ const App = () => {
       <Suspense fallback={<p>Loading...</p>}>
         <Routes>
           <Route path="/" element={<Layout />}>
-            {/* Root ("/") now loads Resolved page */}
             <Route index element={<Resolved />} />
             <Route path="map" element={<Map />} />
             <Route path="profile" element={<Profile />} />
           </Route>
-          {/* Redirect unknown URLs back to "/" */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Suspense>

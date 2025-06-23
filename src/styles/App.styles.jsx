@@ -4,10 +4,10 @@ const drawerWidth = 240;
 const appBarHeight = 64;
 
 export const MainContent = styled("main")(({ theme }) => ({
- padding: "10px",
+//  padding: "10px",
 
   [theme.breakpoints.up("md")]: {
     marginLeft: drawerWidth,
-    marginTop: appBarHeight,
+    // marginTop: appBarHeight,
   },
 }));

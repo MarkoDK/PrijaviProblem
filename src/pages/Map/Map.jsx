@@ -330,27 +330,11 @@ const Map = () => {
     };
   }, [debounceTimer]);
 
-  return (
-    <div className="main-div">
-        <div style={{ padding: "10px" }}>
-        <FilterDropdown
-          allTypes={allTypes}
-          activeFilters={activeFilters}
-          onApply={(filters) => setActiveFilters(filters)}
-        />
-      </div>
-
-  
-      <form
-        onSubmit={handleSearch}
-        className="form-style"
-        autoComplete="off"
-        style={{
-          padding: "10px",
-          background: "#f0f0f0",
-          borderBottom: "1px solid #ccc",
-        }}
-      >
+ return (
+  <div className="main-div">
+    {/* Top-left row controls: Search + Filter */}
+    <div className="top-row-controls">
+      <form onSubmit={handleSearch} className="form-style" autoComplete="off">
         <SearchInput
           type="text"
           value={query}
@@ -366,9 +350,9 @@ const Map = () => {
           }}
           placeholder="Pretraži..."
         />
-
+        {/* Suggestions dropdown */}
         {suggestions.length > 0 && (
-          <SuggestionsUl>
+          <SuggestionsUl className="suggestions-dropdown">
             {suggestions.map((sug) => (
               <SuggestionsLi
                 key={`${sug.id}-${sug.place_name}`}
@@ -385,11 +369,23 @@ const Map = () => {
           </SuggestionsUl>
         )}
       </form>
-    
 
-      <div ref={mapContainer} style={{ flexGrow: 1, height: "100vh" }} />
+      {/* Filter dropdown */}
+      <div className="filter-wrapper">
+        <FilterDropdown
+          allTypes={allTypes}
+          activeFilters={activeFilters}
+          onApply={(filters) => setActiveFilters(filters)}
+        />
+      </div>
     </div>
-  );
+
+    {/* Map itself */}
+    <div ref={mapContainer} style={{ flexGrow: 1, height: "100vh" }} />
+  </div>
+);
+
+
 };
 
 export default Map;

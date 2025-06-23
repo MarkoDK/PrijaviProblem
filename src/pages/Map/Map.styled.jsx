@@ -26,4 +26,6 @@ export const SearchInput = styled("input")(({ theme }) => ({
   width: "100%",
   padding: "8px",
   fontSize: "16px",
+  borderRadius: "24px",
+  borderColor: "transparent"
 }));

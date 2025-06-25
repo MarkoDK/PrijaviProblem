@@ -241,17 +241,27 @@ const Map = () => {
     return R * c;
   };
 
-  const fetchSuggestions = async (text) => {
-    if (!text) {
-      setSuggestions([]);
-      return;
-    }
+ const fetchSuggestions = async (text) => {
+  if (!text) {
+    setSuggestions([]);
+    return;
+  }
 
-    const res = await fetch(
-      `https://api.maptiler.com/geocoding/${encodeURIComponent(
-        text
-      )}.json?key=${MAPTILER_API_KEY}&language=sr&country=RS&limit=5`
-    );
+  const baseUrl = `https://api.maptiler.com/geocoding/${encodeURIComponent(text)}.json`;
+  const params = new URLSearchParams({
+    key: MAPTILER_API_KEY,
+    language: "sr",
+    country: "RS",
+    limit: "5",
+    types: "poi", // Limit to points of interest
+  });
+
+  if (userLocation) {
+    params.append("proximity", `${userLocation.lng},${userLocation.lat}`);
+  }
+
+  try {
+    const res = await fetch(`${baseUrl}?${params.toString()}`);
     const data = await res.json();
 
     const enriched = data.features.map((feature) => {
@@ -269,7 +279,12 @@ const Map = () => {
     });
 
     setSuggestions(enriched);
-  };
+  } catch (err) {
+    console.error("Error fetching suggestions:", err);
+    setSuggestions([]);
+  }
+};
+
 
   const handleSearch = async (e) => {
     e.preventDefault();
